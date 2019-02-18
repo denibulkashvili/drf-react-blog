@@ -1,13 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-const Post = (props) => {
+ const Post = ({match}) => {
   return (
     <div>
-      <h2>{props.post.title}</h2>
-      <span>{props.post.date_created}</span>
-      <div>{props.post.body}</div>
+      Here's the id {match.params.postId}
     </div>
   )
 }
+
 
 export default Post;
