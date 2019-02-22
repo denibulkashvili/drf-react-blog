@@ -8,5 +8,5 @@ from blog import views
 
 urlpatterns = [
     path('', views.PostListView.as_view(), name='post-list'),
-    path('<int:pk>', views.PostDetailView.as_view(), name='post-detail'),
+    path('<int:pk>/', views.PostDetailView.as_view(), name='post-detail'),
 ]

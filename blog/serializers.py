@@ -6,7 +6,7 @@ from rest_framework import serializers
 from blog.models import Post
 
 class PostSerializer(serializers.ModelSerializer):
-    """Hyperlinked serializer for Post model"""
+    """Serializer class for Post model"""
 
     class Meta:
         model = Post

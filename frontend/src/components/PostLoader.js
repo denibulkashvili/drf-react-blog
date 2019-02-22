@@ -16,22 +16,23 @@ class PostLoader extends Component {
   componentDidMount() {
     axios({
       method: 'get',
-      url: "/api/posts/",
+      url: this.props.endpoint,
       crossDomain: true,
       withCredentials: true
     })
     .then(res => {
       const posts = res.data.results
-      console.log(typeof(posts));
       this.setState({
         posts, 
         isLoaded: true
-      }, () => {
-        console.log(`Loaded data: ${this.state.posts}`)
       })
+    })
+    .catch((error) => {
+      console.log(error);
     });
   }
 
+ 
   renderPosts() {
     const { posts, isLoaded, placeholder } = this.state
     return (

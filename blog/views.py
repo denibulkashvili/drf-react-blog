@@ -2,7 +2,7 @@
 Creates views for blog app
 """
 
-from rest_framework import generics 
+from rest_framework import generics
 from blog.models import Post
 from blog.serializers import PostSerializer
 
@@ -16,7 +16,7 @@ class PostListView(generics.ListAPIView):
 
 class PostDetailView(generics.RetrieveAPIView):
     """
-    RetrieveAPIView class to get single post
+    Post detail view to get single post
     """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
