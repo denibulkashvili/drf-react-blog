@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import key from "weak-key";
-import Post from './Post';
+import PostList from './PostList';
 
 class PostLoader extends Component {
   constructor(props) {
@@ -14,25 +14,31 @@ class PostLoader extends Component {
   }
   
   componentDidMount() {
-    
-    axios.get(this.props.endpoint)
+    axios({
+      method: 'get',
+      url: this.props.endpoint,
+      crossDomain: true,
+      withCredentials: true
+    })
     .then(res => {
       const posts = res.data.results
-      console.log(typeof(posts));
       this.setState({
         posts, 
         isLoaded: true
-      }, () => {
-        console.log(`Loaded data: ${this.state.posts}`)
       })
+    })
+    .catch((error) => {
+      console.log(error);
     });
   }
 
+ 
   renderPosts() {
     const { posts, isLoaded, placeholder } = this.state
     return (
       <div>
-        {isLoaded ? posts.map(post => <Post key={key(post)} post={post} />) : placeholder}
+        <h1>Posts</h1>
+        {isLoaded ? posts.map(post => <PostList key={key(post)} post={post} />) : placeholder}
       </div>
     );
   }
