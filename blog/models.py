@@ -18,9 +18,10 @@ class Post(models.Model):
     """Creates a Post model class"""
     title = models.CharField(max_length=100, blank=True, default='')
     body = models.TextField()
-    date_created = models.DateField(auto_now_add=True)
+    date_created = models.DateField()
     tldr = models.TextField(max_length=300, blank=True, default='')
     tags = models.ManyToManyField(Tag)
+    cover = models.ImageField(allow_empty_file=False)
 
     # cover_img
     # slug
