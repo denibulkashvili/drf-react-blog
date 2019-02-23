@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import key from 'weak-key';
 
  class Post extends Component {
   constructor(props) {
@@ -36,13 +37,31 @@ import axios from 'axios';
     });
   }
 
-  
+  get tagsList() {
+    
+    const tagsList = Object.entries(this.state.data.tags).map(tag => (
+      <span key={key(tag)}>
+        {tag[1].name} &nbsp;
+      </span>
+    ));
+    console.log(tagsList)
+    return tagsList;  
+  }
+
+   
   render() {
+
+    const { title, date_created, body, cover } = this.state.data
+
+    const { isLoaded, placeholder } = this.state;
+
     return (
       <div>
-        <h1>{this.state.data.title}</h1>
-        <div>Created at: {this.state.data.date_created}</div>
-        <div>{this.state.data.body}</div>
+        <h1>{title}</h1>
+        <img src={cover} />
+        <p>Tags: <span>{isLoaded ? this.tagsList : placeholder}</span> </p>
+        <div>Created at: {date_created}</div>
+        <div>{body}</div>
       </div>
     )
   }

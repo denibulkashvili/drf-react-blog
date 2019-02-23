@@ -21,7 +21,7 @@ class Post(models.Model):
     date_created = models.DateField()
     tldr = models.TextField(max_length=300, blank=True, default='')
     tags = models.ManyToManyField(Tag)
-    cover = models.ImageField(allow_empty_file=False)
+    cover = models.ImageField(default="")
 
     # cover_img
     # slug
