@@ -13,7 +13,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path="/" render={(props)=><PostLoader {...props} endpoint={"/api/posts/"} />} exact />
-          <Route path="/post/:id/" component={Post} exact />
+          <Route path="/post/:slug/" component={Post} exact />
           <Route component={NotFound} />
         </Switch>
       </Router>

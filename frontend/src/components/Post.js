@@ -12,20 +12,20 @@ import key from 'weak-key';
     }
   }
   
-  get postId() {
-    return "/api/posts/" + this.props.match.params.id + "/";
+  get postSlug() {
+    return "/api/posts/" + this.props.match.params.slug + "/";
   }
 
   componentDidMount() {
     axios({
       method: 'get',
-      url: this.postId,
+      url: this.postSlug,
       crossDomain: true,
       withCredentials: true
     })
     .then(res => {
       const data = res.data
-      console.log(this.postId)
+      console.log(this.postSlug)
       console.log(data)
       this.setState({
         data, 
